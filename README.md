@@ -63,3 +63,14 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 2. Create a new branch:
    ```bash
    git checkout -b feature-YourFeature
+
+
+## License
+
+This project is licensed under the MIT License. 
+
+### MIT License
+
+MIT License
+
+Copyright (c) [2024] [Nguyen Tich Thien]
