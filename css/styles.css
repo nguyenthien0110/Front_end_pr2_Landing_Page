@@ -74,6 +74,19 @@ section {
     transition: ease 0.3s all;
 }
 
+/* Active Section Styles */
+section.active {
+    border: 2px solid #ffcc00;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation Active Link Styles */
+.navbar__menu .menu__link.active {
+    background: #ffcc00;
+    color: #000;
+    transition: background 0.3s ease;
+}
+
 /* Header */
 .page__header {
     background: #fff;
