@@ -1,5 +1,11 @@
 # Landing Page Project
 
+## Visit Page
+
+You can view the live landing page by visiting the following link:
+
+[Landing Page](https://nguyenthien0110.github.io/Front_end_pr2_Landing_Page/)
+
 ## Overview
 
 This project is a responsive landing page built using HTML, CSS, and JavaScript, following the SMACSS architecture. The page features a dynamic navigation menu that updates as the user scrolls through different sections. Each section is highlighted in the navigation menu when it comes into the viewport, providing a smooth user experience.
