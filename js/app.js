@@ -1,62 +1,51 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
+// Dynamically build the navigation menu
+document.addEventListener("DOMContentLoaded", () => {
+  const navbarList = document.getElementById("navbar__list");
+  const sections = document.querySelectorAll("section");
 
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
+  sections.forEach((section) => {
+    const navItem = document.createElement("li");
+    navItem.innerHTML = `<a href="#${section.id}" data-nav="${section.id}" class="menu__link">${section.dataset.nav}</a>`;
+    navbarList.appendChild(navItem);
+  });
 
-/**
- * Define Global Variables
- * 
-*/
+  // Add 'active' class to the section in the viewport
+  window.addEventListener("scroll", () => {
+    let currentSection = null;
 
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const link = document.querySelector(`a[data-nav="${section.id}"]`);
 
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
+      if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+        if (
+          !currentSection ||
+          rect.top < currentSection.getBoundingClientRect().top
+        ) {
+          currentSection = section;
+        }
+      }
 
+      section.classList.remove("active");
+      link.classList.remove("active");
+    });
 
+    if (currentSection) {
+      currentSection.classList.add("active");
+      document
+        .querySelector(`a[data-nav="${currentSection.id}"]`)
+        .classList.add("active");
+    }
+  });
 
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
-// build the nav
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
+  // Smooth scroll to section on link click
+  navbarList.addEventListener("click", (event) => {
+    event.preventDefault();
+    const targetSection = document.getElementById(
+      event.target.getAttribute("data-nav")
+    );
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
